@@ -11,8 +11,6 @@ RSpec.describe Song, type: :model do
 
   context "with attachments" do
 
-    it { should have_attached_file :album_cover }
-
     it "has a :thumb style" do
       song = Song.first
       expect(song.album_cover.styles[:thumb]).to_not eq nil
