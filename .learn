@@ -1,8 +1,9 @@
 tags:
-  - mvc
-  - helpers
   - rails
-  - separation of concerns
+  - paperclip
+  - attachments
+  - uploads
+  - gems
 languages:
   - ruby
 resources: 0

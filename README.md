@@ -1,42 +1,33 @@
-# Refactoring Views With Helpers Lab
+# Uploading Images With Paperclip Lab
 
 ## Objectives
 
-1. Review creating associated objects
-2. Write a helper to conditionally display different links
-3. Use the helper in multiple views
+1. Use Paperclip to add an image attachment to a model.
+2. Set default images when avatars aren't there.
+3. Post-process avatars to create thumbnails of avatars.
 
 ## Song Library
 
-In this lab, we're going to augment our song library to show the artists
-associated with songs, and use helpers to display different links based
-on whether or not a song is associated with an artist.
+In this lab, we're going to augment our song library to upload album
+cover art and display them with songs.
 
-When we add songs to our library, we want to be sure to include the
-artist so that we can keep things organized. Sometimes, however, we
-might be in a hurry and don't know the artist off the top of our heads,
-so we leave it blank.
-
-When we display the song library, we want to include the artist, but if there's no artist associated, we want to prompt the user to add one, because we don't want to contribute to the global iTunes library "Unknown Artist" epidemic.
+When we list songs, we want to show an album cover thumbnail, but when
+we're on the song's page, we'd like to see the full-size image. We also
+want it to still look good if we haven't uploaded cover art yet.
 
 ## Instructions
 
-The base models, controllers, views and other files have been provided. There are
-tests for the lab in the `spec` directory. You can run tests with the
-`rspec` command.
+The base models, controllers, views and other files have been provided. There's seed data to get you started, and there are tests for the lab in the `spec` directory.
 
-1. Write the code to get (`artist_name`) and set (`artist_name=`) the
-   `Artist` associated with a `Song` model.
-2. Write a helper method to display the artist for a song, with the
-   following considerations:
-  * Put the method in the appropriate helper file following the
-    principle of Separation of Concerns
-  * Name the method `display_artist`
-  * If the artist name is not `nil`, return a link to the artist's
-    `show` page.
-  * If the artist name is `nil`, return a link to the song's `edit`
-    page, with a link text of "Add Artist"
-3. Use the helper to display the artist on the song `show` and `index`
-   pages.
-4. Make sure all tests pass then do this:
-![Dancing Daft Punk](http://i.giphy.com/ZCKh7knqLpc4M.gif)
+Since we are adding new features to an existing application, there will
+already be some passing tests. Part of your job is to make sure they're
+still passing after you're done!
+
+1. Use Paperclip to add an `album_cover` attachment to songs. Create a
+   `:thumb` style for image thumbnails, set a default image of your
+choosing, and set up the new and edit song pages to do the image upload.
+2. Display the thumbnail image with the song in the song index, and
+   display the full-size image on the song show page.
+3. Make sure all tests pass then do this:
+
+![Prancing Homer](http://i.giphy.com/kEKcOWl8RMLde.gif)
