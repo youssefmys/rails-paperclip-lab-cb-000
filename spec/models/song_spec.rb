@@ -1,11 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Song, type: :model do
+
   before do
     Artist.destroy_all
     Song.destroy_all
     @artist = Artist.create!(name: "Daft Punk")
     @grid = @artist.songs.create!(title: "The Grid")
+  end
+
+  context "with attachments" do
+
+    it { should have_attached_file :album_cover }
+
+    it "has a :thumb style" do
+      song = Song.first
+      expect(song.album_cover.styles[:thumb]).to_not eq nil
+    end
+
+    it "has a default" do
+      song = Song.first
+      expect(song.album_cover.url).to_not eq /missing.png/
+    end
   end
 
   it "gets the artist name" do
